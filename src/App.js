@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
-import Sort from "./Sort";
 
 function App() {
   const [bots, setBots] = useState([]);
   const [army, setArmy] = useState([]);
-  const [sort, setSort] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8001/bots")
@@ -36,33 +34,20 @@ function App() {
       .catch((error) => console.log(error));
   };
 
-  const sortBots = (bots) => {
-    if (sort) {
-      return [...bots].sort((a, b) => b[sort] - a[sort]);
-    }
-    return bots;
-  };
-
-  const sortedBots = sortBots(bots);
-
   return (
     <div className="app-container">
       <div className="top-bar">
-        <h1 id="header">BOT BATTLR</h1>
+        <img src="https://i.pinimg.com/736x/30/df/48/30df48b1868f27c6dfd04819aa9524df.jpg" alt="logo"/>
+        <h2 id="header">BOT BATTLR:guilty as CHARGED</h2>
       </div>
       <div className="row">
-        <div className="available-bots">
-          <h2 id="header">Available Bots</h2>
-          <BotCollection bots={sortedBots} onClick={enlistBot} onDelete={onDelete} />
-        </div>
         <div className="your-bot-army">
           <h2>Your Bot Army</h2>
-          <YourBotArmy
-            army={army}
-            releaseBot={releaseBot}
-            onDelete={onDelete}
-          />
-          <Sort setSort={setSort} />
+          <YourBotArmy army={army} releaseBot={releaseBot} />
+        </div>
+        <div className="available-bots">
+          <h2 id="header">Available Bots</h2>
+          <BotCollection bots={bots} onClick={enlistBot} onDelete={onDelete} />
         </div>
       </div>
     </div>
