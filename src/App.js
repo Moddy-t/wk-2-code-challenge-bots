@@ -7,7 +7,7 @@ function App() {
   const [army, setArmy] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8001/bots")
+    fetch("https://wk-2-code-challenge-bots.onrender.com/bots")
       .then((resp) => resp.json())
       .then((data) => setBots(data))
       .catch((error) => console.log(error));
@@ -26,7 +26,10 @@ function App() {
   };
 
   const onDelete = (botToDelete) => {
-    fetch(`http://localhost:8001/bots/${botToDelete.id}`, { method: "DELETE" })
+    fetch(
+      `https://wk-2-code-challenge-bots.onrender.com/bots/${botToDelete.id}`,
+      { method: "DELETE" }
+    )
       .then(() => {
         setBots(bots.filter((bot) => bot.id !== botToDelete.id));
         setArmy(army.filter((bot) => bot.id !== botToDelete.id));
@@ -37,7 +40,10 @@ function App() {
   return (
     <div className="app-container">
       <div className="top-bar">
-        <img src="https://i.pinimg.com/736x/30/df/48/30df48b1868f27c6dfd04819aa9524df.jpg" alt="logo"/>
+        <img
+          src="https://i.pinimg.com/736x/30/df/48/30df48b1868f27c6dfd04819aa9524df.jpg"
+          alt="logo"
+        />
         <h2 id="header">BOT BATTLR:guilty as CHARGED</h2>
       </div>
       <div className="row">
