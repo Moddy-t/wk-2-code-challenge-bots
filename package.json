@@ -1,4 +1,4 @@
-{
+{"Home": "https://Moddy-t.github.io/wk-2-code-challenge-bots",
   "name": "botbattlr",
   "version": "0.1.0",
   "private": true,
@@ -11,9 +11,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages  -d build",  
     "server": "json-server --watch db.json -p 8001",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
