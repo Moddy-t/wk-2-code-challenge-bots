@@ -7,7 +7,7 @@ function App() {
   const [army, setArmy] = useState([]);
 
   useEffect(() => {
-    fetch("https://wk-2-code-challenge-bots.onrender.com/bots")
+    fetch("https://my-json-server.typicode.com/Moddy-t/wk-2-code-challenge-bots/bots")
       .then((resp) => resp.json())
       .then((data) => setBots(data))
       .catch((error) => console.log(error));
@@ -27,7 +27,7 @@ function App() {
 
   const onDelete = (botToDelete) => {
     fetch(
-      `https://wk-2-code-challenge-bots.onrender.com/bots/${botToDelete.id}`,
+      `https://my-json-server.typicode.com/Moddy-t/wk-2-code-challenge-bots/bots/${botToDelete.id}`,
       { method: "DELETE" }
     )
       .then(() => {
